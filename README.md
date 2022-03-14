@@ -44,11 +44,22 @@ Before running the script, ensure you have the following:
 1. Open a terminal or command prompt in the folder containing the script.
 2. Run the following command to install all required libraries:
    ```bash
+   python -m venv venv
+   ```
+   1. On Windows:
+   ```bash
+   venv\Scripts\activate
+   ```
+    2. On macOS/Linux:
+   ```bash
+   source venv/bin/activate
+   ```
+   ```bash
    pip install -r requirements.txt
    ```
    This installs all dependencies listed in the `requirements.txt` file.
 
-### Step 2: Activate Virtual Environment (Optional but Recommended)
+### Step 2: Activate Virtual Environment (Not Optional)
 If you want to use the provided virtual environment (`venv`):
 1. On Windows:
    ```bash
