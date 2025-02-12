@@ -32,6 +32,7 @@ The `Robot.py` script is designed to automate interactions with a website. It us
 Before running the script, ensure you have the following:
 
 - **Python Installed**: Make sure Python 3.x is installed on your computer. You can download it from [python.org](https://www.python.org/downloads/).
+- **vscode Installed**: Make sure VSCODE is installed on your computer. You can download it from [visualstudio.com](https://code.visualstudio.com/download).
 - **Chrome Browser**: Ensure that Google Chrome is installed on your system.
 - **Chromedriver**: The script includes a `chromedriver` file. Ensure its version matches your installed Chrome browser version.
 
