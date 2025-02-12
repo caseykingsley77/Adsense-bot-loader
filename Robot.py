@@ -51,7 +51,8 @@ def create_driver(proxy, user_agent):
     chrome_options.add_experimental_option('useAutomationExtension', False)
     chrome_options.add_argument('--ignore-certificate-errors')
     chrome_options.add_argument('--ignore-ssl-errors')
-    service = Service('./chromedriver')
+    # service = Service('./chromedriver') #Remove '#' at the begining of the line to use it in linux
+    service = Service('chromedriver.exe')
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
