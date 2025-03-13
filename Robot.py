@@ -13,14 +13,154 @@ from retrying import retry
 # List of proxies
 # Where to input proxies
 proxies = [
- "159.203.91.171:50474",
- "159.203.91.171:50474",
- "159.203.91.171:50474",
- "159.203.91.171:50474",
- "159.203.91.171:50474",
- "159.203.91.171:50474",
- "159.203.91.171:50474",
+    "43.130.58.109:8433",
+    "43.130.58.109:8441",
+    "43.153.73.54:8159",
+    "43.135.159.230:9495",
+    "43.153.73.54:8211",
+    "43.153.73.54:8143",
+    "43.130.62.247:9352",
+    "43.153.73.54:8214",
+    "43.159.28.58:8735",
+    "43.159.28.58:8759",
+    "43.159.28.58:8696",
+    "43.130.58.109:8458",
+    "43.153.73.54:8142",
+    "43.135.159.230:9491",
+    "43.159.28.58:8736",
+    "43.153.73.54:8216",
+    "43.135.159.230:9483",
+    "43.130.58.109:8435",
+    "43.130.58.109:8478",
+    "43.135.159.230:9499",
+    "43.153.73.54:8125",
+    "43.135.159.230:9542",
+    "43.130.62.247:9380",
+    "43.153.73.54:8136",
+    "43.135.159.230:9492",
+    "43.159.28.58:8705",
+    "43.153.73.54:8122",
+    "43.153.73.54:8170",
+    "43.130.62.247:9387",
+    "43.135.159.230:9516",
+    "43.159.28.58:8776",
+    "43.135.159.230:9459",
+    "43.153.73.54:8150",
+    "43.135.159.230:9480",
+    "43.130.58.109:8426",
+    "43.159.28.58:8711",
+    "43.135.159.230:9463",
+    "43.135.159.230:9537",
+    "43.153.73.54:8192",
+    "43.135.159.230:9457",
+    "43.159.28.58:8757",
+    "43.135.159.230:9518",
+    "43.153.73.54:8155",
+    "43.135.159.230:9551",
+    "43.135.159.230:9501",
+    "43.135.159.230:9546",
+    "43.130.58.109:8428",
+    "43.159.28.58:8714",
+    "43.130.62.247:9337",
+    "43.159.28.58:8710",
+    "43.153.73.54:8167",
+    "43.135.159.230:9475",
+    "43.153.73.54:8210",
+    "43.130.62.247:9418",
+    "43.135.159.230:9536",
+    "43.153.73.54:8127",
+    "43.135.159.230:9543",
+    "43.130.58.109:8510",
+    "43.135.159.230:9502",
+    "43.130.62.247:9405",
+    "43.153.73.54:8182",
+    "43.130.62.247:9406",
+    "43.159.28.58:8722",
+    "43.135.159.230:9524",
+    "43.135.159.230:9454",
+    "43.135.159.230:9470",
+    "43.130.62.247:9411",
+    "43.130.58.109:8436",
+    "43.135.159.230:9494",
+    "43.159.28.58:8727",
+    "43.130.62.247:9399",
+    "43.135.159.230:9474",
+    "43.135.159.230:9534",
+    "43.135.159.230:9460",
+    "43.130.58.109:8512",
+    "43.130.62.247:9363",
+    "43.153.73.54:8164",
+    "43.130.62.247:9374",
+    "43.159.28.58:8728",
+    "43.135.159.230:9544",
+    "43.130.58.109:8437",
+    "43.135.159.230:9547",
+    "43.130.58.109:8431",
+    "43.153.73.54:8184",
+    "43.159.28.58:8734",
+    "43.130.58.109:8432",
+    "43.130.58.109:8488",
+    "43.159.28.58:8706",
+    "43.130.58.109:8496",
+    "43.135.159.230:9476",
+    "43.153.73.54:8205",
+    "43.153.73.54:8141",
+    "43.135.159.230:9538",
+    "43.153.73.54:8131",
+    "43.159.28.58:8761",
+    "43.130.62.247:9342",
+    "43.153.73.54:8213",
+    "43.159.28.58:8726",
+    "43.130.62.247:9371",
+    "43.130.62.247:9349",
+    "43.130.58.109:8430",
+    "43.130.62.247:9365",
+    "43.135.159.230:9469",
+    "43.130.58.109:8499",
+    "43.159.28.58:8766",
+    "43.159.28.58:8779",
+    "43.130.58.109:8493",
+    "43.135.159.230:9489",
+    "43.130.62.247:9385",
+    "43.130.62.247:9341",
+    "43.130.62.247:9333",
+    "43.130.58.109:8449",
+    "43.130.58.109:8484",
+    "43.130.62.247:9402",
+    "43.153.73.54:8123",
+    "43.135.159.230:9465",
+    "43.159.28.58:8772",
+    "43.159.28.58:8762",
+    "43.159.28.58:8695",
+    "43.130.58.109:8434",
+    "43.135.159.230:9527",
+    "43.135.159.230:9496",
+    "43.135.159.230:9553",
+    "43.135.159.230:9462",
+    "43.159.28.58:8749",
+    "43.159.28.58:8739",
+    "43.135.159.230:9513",
+    "43.135.159.230:9548",
+    "43.153.73.54:8130",
+    "43.130.62.247:9396",
+    "43.130.58.109:8518",
+    "43.135.159.230:9504",
+    "43.159.28.58:8704",
+    "43.153.73.54:8166",
+    "43.159.28.58:8767",
+    "43.153.73.54:8153",
+    "43.153.73.54:8202",
+    "43.153.73.54:8206",
+    "43.130.58.109:8445",
+    "43.153.73.54:8193",
+    "43.130.58.109:8456",
+    "43.130.62.247:9382",
+    "43.153.73.54:8178",
+    "43.135.159.230:9515",
+    "43.130.58.109:8521"
 ]
+
+
 
 
 # List of user agents
@@ -179,39 +319,39 @@ def open_link_in_page(driver):
     except Exception as e:
         print(f"Error opening link in page: {e}")
 
-def handle_google_consent(driver):
-    try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "form")))
+# def handle_google_consent(driver):
+#     try:
+#         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "form")))
         
-        consent_selectors = [
-            "button[aria-label*='Accept' i]",
-            "button[aria-label*='Agree' i]",
-            "button[aria-label*='Consent' i]",
-            "button[aria-label*='Accepter' i]",
-            "button[aria-label*='Akzeptieren' i]",
-            "button[aria-label*='Accetta' i]",
-            "button:not([aria-label]):not([type='submit'])",
-            "div[role='button']",
-            "input[type='submit']",
-            "a[role='button']"
-        ]
+#         consent_selectors = [
+#             "button[aria-label*='Accept' i]",
+#             "button[aria-label*='Agree' i]",
+#             "button[aria-label*='Consent' i]",
+#             "button[aria-label*='Accepter' i]",
+#             "button[aria-label*='Akzeptieren' i]",
+#             "button[aria-label*='Accetta' i]",
+#             "button:not([aria-label]):not([type='submit'])",
+#             "div[role='button']",
+#             "input[type='submit']",
+#             "a[role='button']"
+#         ]
         
-        for selector in consent_selectors:
-            buttons = driver.find_elements(By.CSS_SELECTOR, selector)
-            for button in buttons:
-                if button.is_displayed() and button.is_enabled():
-                    try:
-                        driver.execute_script("arguments[0].click();", button)
-                        human_like_delay()
-                        return
-                    except:
-                        continue
+#         for selector in consent_selectors:
+#             buttons = driver.find_elements(By.CSS_SELECTOR, selector)
+#             for button in buttons:
+#                 if button.is_displayed() and button.is_enabled():
+#                     try:
+#                         driver.execute_script("arguments[0].click();", button)
+#                         human_like_delay()
+#                         return
+#                     except:
+#                         continue
 
-        # If no button found, try to find any clickable element within the form
-        form = driver.find_element(By.TAG_NAME, "form")
-        clickable_elements = form.find_elements(By.CSS_SELECTOR, "button, input[type='submit'], a[role='button']")
-        if clickable_elements:
-            click_with_retry(driver, random.choice(clickable_elements))
+#         # If no button found, try to find any clickable element within the form
+#         form = driver.find_element(By.TAG_NAME, "form")
+#         clickable_elements = form.find_elements(By.CSS_SELECTOR, "button, input[type='submit'], a[role='button']")
+#         if clickable_elements:
+#             click_with_retry(driver, random.choice(clickable_elements))
         
         WebDriverWait(driver, 10).until_not(EC.presence_of_element_located((By.TAG_NAME, "form")))
     except Exception as e:
@@ -226,26 +366,26 @@ def perform_actions(driver, global_ads_clicked):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "q")))
         input_element = driver.find_element(By.NAME, "q")
         input_element.clear()
-        input_element.send_keys("site:https://lacredits.com" + Keys.ENTER)
+        input_element.send_keys("site:https://nationaleconomy.com" + Keys.ENTER)
 
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, "Life2024 - Ignite Your Curiosity")))
-        search_results = driver.find_elements(By.PARTIAL_LINK_TEXT, "Life2024 - Ignite Your Curiosity")
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, "National Economy Newspaper - Business News, Nigerian ...")))
+        search_results = driver.find_elements(By.PARTIAL_LINK_TEXT, "National Economy Newspaper - Business News, Nigerian ...")
         if search_results:
             search_results[0].click()
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
         links_to_open = [
-     "Tesla or Lucid: Which Electric Car Will Dominate the Luxury Market in 2025?", 
-     "Forget BMW and Audi: These Luxury Cars Are the Real Kings of 2024!",
-     "NordVPN’s Hidden Hack: Watch Netflix Content You Didn’t Know Existed!",
-     "How to Invest in Real Estate for Passive Income in 2025", 
-     "USA: «Save Money on Home Insurance with These Proven Strategies! »",
-     "Canada: «Canadians Are Saving Thousands on Health Insurance with This One Trick! »",
-     "Grammarly vs. Human Editors: Who Wins the Battle for Flawless Writing?", 
-     "Mazda USA: The Future of Electric Vehicles and Why It’s Worth Your Attention", 
-     "The Secret to Finding the Best Business Software: A Deep Dive into Capterra", 
-     "Unlock Your Creative Potential: How Adobe Tools Can Transform Your Workflow",
+     "NGX Group, CSCS Commit To Gender Equality", 
+     "Nigeria’s In-country Refining And Import Substitution Imbroglio",
+     "Shell’s $5bn Bonga Field: Iseyi Gas Project To Reshape Energy Sector",
+     "Building Strong Workplace Relationships", 
+     "Need To Accelerate Investment In Digital Transformation",
+     "Heirs Energies To Drive Nigeria’s Oil Production Growth",
+     "Safety App To Tackle Insecurity Issues, Delayed Response Debuts", 
+     "Lagos-Calabar Highway: A Game-changer Or Costly Gamble", 
+     "Transcorp Group Seeks Diversity In Driving Africa’s Energy Transformation", 
+     "CSO Backs Tesla Amid Cybertruck Explosion Allegation",
 ]
         
         
