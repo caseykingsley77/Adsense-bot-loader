@@ -13,7 +13,7 @@ from retrying import retry
 
 # =================== CONFIGURABLE PARAMETERS ===================
 BASE_URL = "https://www.google.com"
-TARGET_SITE = "https://nationaleconomy.com"
+TARGET_SITE = "https://roviral.online"
 SEARCH_QUERY = f"site:{TARGET_SITE}"
 SPECIFIC_SEARCH_RESULT_TEXT = "National Economy Newspaper - Business News, Nigerian ..."
 LINKS_TO_OPEN = [
