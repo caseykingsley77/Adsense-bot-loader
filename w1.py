@@ -31,18 +31,36 @@ LINKS_TO_OPEN = [
 MAX_ADS_TO_CLICK = 1  # Set to 0 to skip ad clicks
 TIMES_TO_OPEN_EACH_LINK = 2
 MINUTES_PER_PAGE = 1
-PROXY_API_URL = "http://api.proxy.ip2world.com/getProxyIp?regions=us&lb=1&return_type=txt&protocol=http&num=500"
+PROXY_API_URL = "https://api.360proxy.com/api/extract_ip?regions=US&num=10&protocol=http&type=json&lt=1&cate=1"
 # ===============================================================
 
+# def fetch_proxies():
+#     """Fetch a fresh list of proxies from the IP2World API."""
+#     try:
+#         response = requests.get(PROXY_API_URL)
+#         response.raise_for_status()
+#         return response.text.strip().split("\r\n")
+#     except requests.RequestException as e:
+#         print(f"Failed to fetch proxies: {e}")
+#         return []
+
 def fetch_proxies():
-    """Fetch a fresh list of proxies from the IP2World API."""
+    """Fetch a fresh list of proxies from the 360Proxy API."""
     try:
         response = requests.get(PROXY_API_URL)
         response.raise_for_status()
-        return response.text.strip().split("\r\n")
+        json_data = response.json()
+        if json_data.get("code") == 0:
+            proxy_list = [f"{entry['ip']}:{entry['port']}" for entry in json_data["data"]]
+            return proxy_list
+        else:
+            print(f"API returned error code: {json_data.get('code')}")
+            return []
     except requests.RequestException as e:
         print(f"Failed to fetch proxies: {e}")
         return []
+
+
 
 def get_random_user_agent():
     """Return a random user agent."""
