@@ -13,33 +13,49 @@ from retrying import retry
 
 # =================== CONFIGURABLE PARAMETERS ===================
 BASE_URL = "https://www.google.com"
-TARGET_SITE = "https://nationaleconomy.com"
+TARGET_SITE = "https://tupazmental.net/"
 SEARCH_QUERY = f"site:{TARGET_SITE}"
-SPECIFIC_SEARCH_RESULT_TEXT = "National Economy Newspaper - Business News, Nigerian ..."
+SPECIFIC_SEARCH_RESULT_TEXT = "Tu Paz Mental"
 LINKS_TO_OPEN = [
-    "Lasaco Assurance Lists Additional 9.25bn Shares On NGX", 
-    "Private Sector Growth Accelerates As Inflationary Pressures Ease",
-    "MTN Nigeria Moves Toward Net-zero With Improved CDP Environmental Scores",
-    "Imperative To Strengthen Nigeria’s Capital Base", 
-    "Strengthening Indigenous Companies Impact In Oil, Gas Business Through NOGICD Act",
-    "CardinalStone Completes Acquisition of Radix Pension",
-    "SFirm Recycles Waste Tyres To Address Environmental Pollution", 
-    "Emerging Fintech Solutions For Informal Retail Sector In Africa", 
-    "CSO Backs Tesla Amid Cybertruck Explosion Allegation", 
-    "Expert Urges Nigeria To Leverage Technology For Livestock Export Market",
+    "¿Qué es la transferencia y la contratransferencia en el psicoanálisis?", 
+    "¿Cuáles son las frases más inspiradoras de Diógenes?",
+    "¿Qué mitos de terror son realmente reales?",
+    "¿Qué son las 4 etapas del desarrollo cognitivo según Jean Piaget?", 
+    "¿Qué me enseñan las 90 frases de Jaime Sabines?",
+    "¿De qué se habla en 130 frases sobre la muerte y el más allá?",
+    "¿Cuáles son las Identidades Juveniles?", 
+    "¿Qué palabras pueden describir la traición?", 
+    "¿Qué es la transferencia y la contratransferencia en el psicoanálisis?", 
+    "¿Cuáles son las frases más inspiradoras de Diógenes?",
 ]
 MAX_ADS_TO_CLICK = 1  # Set to 0 to skip ad clicks
 TIMES_TO_OPEN_EACH_LINK = 2
-MINUTES_PER_PAGE = 3
-PROXY_API_URL = "http://api.proxy.ip2world.com/getProxyIp?regions=us&lb=1&return_type=txt&protocol=http&num=500"
+MINUTES_PER_PAGE = 1
+PROXY_API_URL = "https://api.360proxy.com/api/extract_ip?regions=US&num=10&protocol=http&type=json&lt=1&cate=1"
 # ===============================================================
 
+# def fetch_proxies():
+#     """Fetch a fresh list of proxies from the IP2World API."""
+#     try:
+#         response = requests.get(PROXY_API_URL)
+#         response.raise_for_status()
+#         return response.text.strip().split("\r\n")
+#     except requests.RequestException as e:
+#         print(f"Failed to fetch proxies: {e}")
+#         return []
+
 def fetch_proxies():
-    """Fetch a fresh list of proxies from the IP2World API."""
+    """Fetch a fresh list of proxies from the 360Proxy API."""
     try:
         response = requests.get(PROXY_API_URL)
         response.raise_for_status()
-        return response.text.strip().split("\r\n")
+        json_data = response.json()
+        if json_data.get("code") == 0:
+            proxy_list = [f"{entry['ip']}:{entry['port']}" for entry in json_data["data"]]
+            return proxy_list
+        else:
+            print(f"API returned error code: {json_data.get('code')}")
+            return []
     except requests.RequestException as e:
         print(f"Failed to fetch proxies: {e}")
         return []

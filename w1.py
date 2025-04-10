@@ -13,20 +13,20 @@ from retrying import retry
 
 # =================== CONFIGURABLE PARAMETERS ===================
 BASE_URL = "https://www.google.com"
-TARGET_SITE = "https://roviral.online"
+TARGET_SITE = "https://nextgenentrepreneur.live/"
 SEARCH_QUERY = f"site:{TARGET_SITE}"
-SPECIFIC_SEARCH_RESULT_TEXT = "roviral -"
+SPECIFIC_SEARCH_RESULT_TEXT = "NextGenEntrepreneur: Home"
 LINKS_TO_OPEN = [
-    "LOANS EEUU", 
-    "Maximizing Your Wealth: Top Financial Strategies for 2025",
-    "Best Credit Cards in the United States",
-    "Understanding Bitcoin", 
-    "Understanding Personal Finance",
-    "Life Insurance in the United States",
-    "Cryptocurrencies", 
-    "Personals Loans", 
-    "What does beyond finance do", 
-    "How long has beyond finance been in business",
+    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024", 
+    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
+    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024",
+    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
+    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024",
+    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
+    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024", 
+    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
+    "How To Cancel Direct Line Car Insurance in 5 Minutes 2024", 
+    "How To Cancel People Magazine Subscription in Easy Way 2024",
 ]
 MAX_ADS_TO_CLICK = 1  # Set to 0 to skip ad clicks
 TIMES_TO_OPEN_EACH_LINK = 2

@@ -13,32 +13,49 @@ from retrying import retry
 
 # =================== CONFIGURABLE PARAMETERS ===================
 BASE_URL = "https://www.google.com"
-TARGET_SITE = "https://ehow.ng"
+TARGET_SITE = "https://nextgenentrepreneur.live/"
 SEARCH_QUERY = f"site:{TARGET_SITE}"
-SPECIFIC_SEARCH_RESULT_TEXT = "Ehow - How-to Guide To Everything"
+SPECIFIC_SEARCH_RESULT_TEXT = "NextGenEntrepreneur: Home"
 LINKS_TO_OPEN = [
-    "How to Freeze a Bank Account in Nigeria: A Step-by-Step Guide", 
-    "How to Incorporate Forex Trading into Your Investment Strategy",
-    "How To Migrate To MTN Beta Talk",
-    "How to withdraw from Tapswap, Step-by-Step Guide", 
-    "How To Apply For Student Loan In Nigeria Online",
-    "How To Get a Scholarship at MIT",
-    "How To Change BVN Phone Number Online", 
-    "How to Apply for Scholarships at Oxford university", 
-    "How to Apply to Canadian Universities",
+    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024", 
+    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
+    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024",
+    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
+    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024",
+    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
+    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024", 
+    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
+    "How To Cancel Direct Line Car Insurance in 5 Minutes 2024", 
+    "How To Cancel People Magazine Subscription in Easy Way 2024",
 ]
 MAX_ADS_TO_CLICK = 3  # Set to 0 to skip ad clicks
 TIMES_TO_OPEN_EACH_LINK = 2
-MINUTES_PER_PAGE = 2
-PROXY_API_URL = "http://api.proxy.ip2world.com/getProxyIp?regions=us&lb=1&return_type=txt&protocol=http&num=500"
+MINUTES_PER_PAGE = 1
+PROXY_API_URL = "https://api.360proxy.com/api/extract_ip?regions=US&num=10&protocol=http&type=json&lt=1&cate=1"
 # ===============================================================
 
+# def fetch_proxies():
+#     """Fetch a fresh list of proxies from the IP2World API."""
+#     try:
+#         response = requests.get(PROXY_API_URL)
+#         response.raise_for_status()
+#         return response.text.strip().split("\r\n")
+#     except requests.RequestException as e:
+#         print(f"Failed to fetch proxies: {e}")
+#         return []
+
 def fetch_proxies():
-    """Fetch a fresh list of proxies from the IP2World API."""
+    """Fetch a fresh list of proxies from the 360Proxy API."""
     try:
         response = requests.get(PROXY_API_URL)
         response.raise_for_status()
-        return response.text.strip().split("\r\n")
+        json_data = response.json()
+        if json_data.get("code") == 0:
+            proxy_list = [f"{entry['ip']}:{entry['port']}" for entry in json_data["data"]]
+            return proxy_list
+        else:
+            print(f"API returned error code: {json_data.get('code')}")
+            return []
     except requests.RequestException as e:
         print(f"Failed to fetch proxies: {e}")
         return []
