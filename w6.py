@@ -15,19 +15,15 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException,
 
 # =================== CONFIGURABLE PARAMETERS ===================
 BASE_URL = "https://www.google.com"
-TARGET_SITE = "https://nextgenentrepreneur.live/"
+TARGET_SITE = "https://tupazmental.net/"
 SEARCH_QUERY = f"site:{TARGET_SITE}"
-SPECIFIC_SEARCH_RESULT_TEXT = "NextGenEntrepreneur: Home"
+SPECIFIC_SEARCH_RESULT_TEXT = "Tu Paz Mental"
 LINKS_TO_OPEN = [
-    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024", 
-    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
-    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024",
-    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
-    "How To Cancel Direct Line Car Insurance in 5 Minutes 2024", 
-    "How To Cancel People Magazine Subscription in Easy Way 2024",
+    "¿Qué es la transferencia y la contratransferencia en el psicoanálisis?", 
+    "¿Cuáles son las frases más inspiradoras de Diógenes?",
 ]
-MAX_ADS_TO_CLICK = 0
-TIMES_TO_OPEN_EACH_LINK = 2
+MAX_ADS_TO_CLICK = 1
+TIMES_TO_OPEN_EACH_LINK = 1
 MINUTES_PER_PAGE = 1
 LOG_FILE = "visit_log.txt"
 # ===============================================================
@@ -111,7 +107,7 @@ def create_driver(proxy_string):
     options.add_argument("--start-maximized")
     options.add_argument("--disable-notifications")
 
-    proxy_plugin = create_proxy_extension(proxy_string)
+    # proxy_plugin = create_proxy_extension(proxy_string)
     options.add_extension(proxy_plugin)
 
     service = Service('chromedriver.exe')

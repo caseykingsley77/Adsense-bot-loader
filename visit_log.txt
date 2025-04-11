@@ -1,2 +1,13 @@
 [2025-04-10 15:19:36] Proxy: 152.53.36.109:51082:OQT33R:giTECu - SUCCESS
 [2025-04-10 15:37:08] Proxy: 194.163.163.10:57063:nPb1wI:aJgRQo - SUCCESS
+[2025-04-10 15:42:55] Proxy: 49.12.196.34:56534:YqIlQp:XrhldJ - FAILED - HTTPConnectionPool(host='localhost', port=52504): Max retries exceeded with url: /session/e87b680094375495ef36e75fe1d5e236/window (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D10A744E20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+[2025-04-10 15:48:20] Proxy: 152.53.36.109:51082:OQT33R:giTECu - FAILED - HTTPConnectionPool(host='localhost', port=52694): Max retries exceeded with url: /session/67def039349483ea2d77cf6deaff163b/window (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001BE3B07C640>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+[2025-04-10 15:51:57] Proxy: 152.53.36.109:51082:OQT33R:giTECu - SUCCESS
+[2025-04-10 15:54:16] Proxy: 152.53.36.109:51082:OQT33R:giTECu - FAILED - name 'proxy_plugin' is not defined
+[2025-04-10 15:54:24] Proxy: 194.163.163.10:57063:nPb1wI:aJgRQo - FAILED - name 'proxy_plugin' is not defined
+[2025-04-10 15:54:33] Proxy: 49.12.196.34:56534:YqIlQp:XrhldJ - FAILED - name 'proxy_plugin' is not defined
+[2025-04-10 15:54:39] Proxy: 152.53.36.109:44136:wwrN7L:lewQMy - FAILED - name 'proxy_plugin' is not defined
+[2025-04-10 15:54:39] Proxy: 194.163.163.10:57063:nPb1wI:aJgRQo - FAILED - HTTPConnectionPool(host='localhost', port=53163): Max retries exceeded with url: /session/8e23fb9d970839b2e3e167db03824fe7/window (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000134CD3B0B00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+[2025-04-10 16:03:32] Proxy: 152.53.36.109:51082:OQT33R:giTECu - FAILED - name 'proxy_plugin' is not defined
+[2025-04-10 16:03:38] Proxy: 194.163.163.10:57063:nPb1wI:aJgRQo - FAILED - name 'proxy_plugin' is not defined
+[2025-04-10 16:03:46] Proxy: 49.12.196.34:56534:YqIlQp:XrhldJ - FAILED - name 'proxy_plugin' is not defined

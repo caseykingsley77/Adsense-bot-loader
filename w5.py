@@ -1,7 +1,6 @@
-import requests
 import random
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -9,56 +8,35 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
-from retrying import retry
 
 # =================== CONFIGURABLE PARAMETERS ===================
 BASE_URL = "https://www.google.com"
-TARGET_SITE = "https://tupazmental.net/"
+TARGET_SITE = "https://nextgenentrepreneur.live/"
 SEARCH_QUERY = f"site:{TARGET_SITE}"
-SPECIFIC_SEARCH_RESULT_TEXT = "Tu Paz Mental"
+SPECIFIC_SEARCH_RESULT_TEXT = "NextGenEntrepreneur: Home"
 LINKS_TO_OPEN = [
-    "¿Qué es la transferencia y la contratransferencia en el psicoanálisis?", 
-    "¿Cuáles son las frases más inspiradoras de Diógenes?",
-    "¿Qué mitos de terror son realmente reales?",
-    "¿Qué son las 4 etapas del desarrollo cognitivo según Jean Piaget?", 
-    "¿Qué me enseñan las 90 frases de Jaime Sabines?",
-    "¿De qué se habla en 130 frases sobre la muerte y el más allá?",
-    "¿Cuáles son las Identidades Juveniles?", 
-    "¿Qué palabras pueden describir la traición?", 
-    "¿Qué es la transferencia y la contratransferencia en el psicoanálisis?", 
-    "¿Cuáles son las frases más inspiradoras de Diógenes?",
+    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024", 
+    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
+    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024",
+    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
+    "How To Cancel Fitness 19 Membership in Less Then 2 Minute – 2024",
+    "How To Cancel FYE Backstage Pass without Card Online in Just 2 Minute – 2024",
+    "How To Cancel Stitch Fix in Less Than 5 Minutes – 2024", 
+    "How To Cancel Orangetheory Membership in Just 5 Minutes 2024", 
+    "How To Cancel Direct Line Car Insurance in 5 Minutes 2024", 
+    "How To Cancel People Magazine Subscription in Easy Way 2024",
 ]
 MAX_ADS_TO_CLICK = 1  # Set to 0 to skip ad clicks
 TIMES_TO_OPEN_EACH_LINK = 2
 MINUTES_PER_PAGE = 1
-PROXY_API_URL = "https://api.360proxy.com/api/extract_ip?regions=US&num=10&protocol=http&type=json&lt=1&cate=1"
+PROXIES = [
+    "194.163.163.10:50298:uW6OoK:N0lP6G",
+    "194.163.163.10:57063:nPb1wI:aJgRQo",
+    "49.12.196.34:56534:YqIlQp:XrhldJ",
+    "152.53.36.109:44136:wwrN7L:lewQMy"
+]
 # ===============================================================
 
-# def fetch_proxies():
-#     """Fetch a fresh list of proxies from the IP2World API."""
-#     try:
-#         response = requests.get(PROXY_API_URL)
-#         response.raise_for_status()
-#         return response.text.strip().split("\r\n")
-#     except requests.RequestException as e:
-#         print(f"Failed to fetch proxies: {e}")
-#         return []
-
-def fetch_proxies():
-    """Fetch a fresh list of proxies from the 360Proxy API."""
-    try:
-        response = requests.get(PROXY_API_URL)
-        response.raise_for_status()
-        json_data = response.json()
-        if json_data.get("code") == 0:
-            proxy_list = [f"{entry['ip']}:{entry['port']}" for entry in json_data["data"]]
-            return proxy_list
-        else:
-            print(f"API returned error code: {json_data.get('code')}")
-            return []
-    except requests.RequestException as e:
-        print(f"Failed to fetch proxies: {e}")
-        return []
 
 def get_random_user_agent():
     """Return a random user agent."""
@@ -78,6 +56,9 @@ def get_random_user_agent():
 
 def create_driver(proxy):
     """Create a Selenium WebDriver instance with a proxy."""
+    ip, port, username, password = proxy.split(":")
+    proxy_str = f"{username}:{password}@{ip}:{port}"
+    
     options = webdriver.ChromeOptions()
     options.add_argument(f"--user-agent={get_random_user_agent()}")
     options.add_argument("--disable-blink-features=AutomationControlled")
@@ -93,10 +74,11 @@ def create_driver(proxy):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--start-maximized")
-    if proxy:
-        options.add_argument(f"--proxy-server=http://{proxy}")
+    options.add_argument(f"--proxy-server=http://{proxy_str}")
+    
     service = Service('chromedriver.exe')
     driver = webdriver.Chrome(service=service, options=options)
+    
     # Disable navigator.webdriver
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
         "source": """
@@ -153,7 +135,6 @@ def click_ads(driver, global_ads_clicked):
     if MAX_ADS_TO_CLICK == 0:
         print("Skipping ad clicks as MAX_ADS_TO_CLICK is set to 0.")
         return 0, global_ads_clicked
-
     ad_selectors = [
         "div .ads-ad", "ins.adsbygoogle", "[id^='div-gpt-ad']", ".gpt-ad", ".dfp-ad",
         "[class*='sponsored-content']", "[class*='promoted-content']", "[data-ad-slot]"
@@ -190,8 +171,6 @@ def click_random_link_in_ad_page(driver):
     except Exception as e:
         print(f"Error clicking random link in ad page: {e}")
 
-import random
-
 def perform_actions(driver, global_ads_clicked):
     """Perform search and interaction tasks."""
     driver.get(BASE_URL)
@@ -226,10 +205,8 @@ def perform_actions(driver, global_ads_clicked):
     except Exception as e:
         print(f"Error during search or result click: {e}")
         return global_ads_clicked
-
     # Scroll the first page gently in 20 sections
     scroll_page(driver, sections=20)
-
     # Open internal links
     for link_text in LINKS_TO_OPEN:
         for _ in range(TIMES_TO_OPEN_EACH_LINK):
@@ -241,33 +218,26 @@ def perform_actions(driver, global_ads_clicked):
                 human_like_delay()
             except Exception as e:
                 print(f"Error opening link: {link_text}")
-
     # Randomly select tabs for ad clicks
     tabs_with_ads = set(random.sample(driver.window_handles[1:], min(MAX_ADS_TO_CLICK, len(driver.window_handles[1:]))))
-
     # Interact with ads in each tab
     for handle in driver.window_handles[1:]:
         driver.switch_to.window(handle)
         scroll_page(driver, sections=20)
         close_cookie_notice(driver)
-
         if handle in tabs_with_ads and global_ads_clicked < MAX_ADS_TO_CLICK:
             ads_clicked, global_ads_clicked = click_ads(driver, global_ads_clicked)
         else:
             # Skip ad clicks for this tab
             print("Skipping ad clicks for this tab.")
-
         time.sleep(MINUTES_PER_PAGE * 60)
         scroll_page(driver, sections=20)
-
         if handle in tabs_with_ads and MAX_ADS_TO_CLICK > 0:
             click_random_link_in_ad_page(driver)
-
     # Scroll all pages again before exiting
     for handle in driver.window_handles[1:]:
         driver.switch_to.window(handle)
         scroll_page(driver, sections=20)
-
     print(f"Clicked on {global_ads_clicked} ads in total during this session.")
     return global_ads_clicked
 
@@ -285,35 +255,20 @@ def run_instance(proxy, global_ads_clicked):
 
 # Main script
 if __name__ == "__main__":
-    proxies = fetch_proxies()
-    if not proxies:
-        print("No proxies available. Exiting.")
-        exit()
-
     proxy_index = 0
-    total_proxies = len(proxies)
+    total_proxies = len(PROXIES)
     global_ads_clicked = 0
-
     while global_ads_clicked < MAX_ADS_TO_CLICK:
         if proxy_index >= total_proxies:
-            print("Fetching new proxies...")
-            proxies = fetch_proxies()
-            if not proxies:
-                print("No proxies available. Exiting.")
-                exit()
-            proxy_index = 0
-            total_proxies = len(proxies)
-
-        proxy = proxies[proxy_index]
+            print("No more proxies available. Exiting.")
+            exit()
+        proxy = PROXIES[proxy_index]
         print(f"Using proxy: {proxy}")
-
-        with ThreadPoolExecutor(max_workers=3) as executor:
+        with ThreadPoolExecutor(max_workers=1) as executor:
             future = executor.submit(run_instance, proxy, global_ads_clicked)
             try:
                 global_ads_clicked = future.result()
             except Exception as e:
                 print(f"Error with proxy {proxy}: {e}")
-
         proxy_index += 1
-
     print("Script execution complete.")
